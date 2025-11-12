@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Wordle Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class = "heading">Wordle Game</h1>
+  <div class="fullcontainer">
+    <div class="game-container">
+        <input id="guessInput" maxlength="5" placeholder="Type 5-letter word" autofocus />
+        <button onclick="submitGuess()">Guess</button>
+        <div id="grid"></div>
+        <div id="message"></div>
+        <button onclick="showWordListEditor()">Hint: Fruits & Vegetables</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
