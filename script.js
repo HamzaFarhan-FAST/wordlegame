@@ -42,19 +42,38 @@ function renderGrid() {
   let gridHTML = "";
   for (let word of attempts) {
     let row = "";
+    let target = secret.split("");
+    let guess = word.split("");
+    let result = Array(5).fill("wrong");
+    let targetUsed = Array(5).fill(false);
+
+    
     for (let i = 0; i < 5; i++) {
-      let cls = "grid-box";
-      if (word[i] === secret[i]) {
-        cls += " correct";
-      } else if (secret.includes(word[i])) {
-        cls += " misplaced";
-      } else {
-        cls += " wrong";
+      if (guess[i] === target[i]) {
+        result[i] = "correct";
+        targetUsed[i] = true;
       }
-      row += `<div class="${cls}">${word[i].toUpperCase()}</div>`;
     }
+
+    
+    for (let i = 0; i < 5; i++) {
+      if (result[i] === "correct") continue;
+      for (let j = 0; j < 5; j++) {
+        if (!targetUsed[j] && guess[i] === target[j]) {
+          result[i] = "misplaced";
+          targetUsed[j] = true;
+          break;
+        }
+      }
+    }
+
+    for (let i = 0; i < 5; i++) {
+      row += `<div class="grid-box ${result[i]}">${guess[i].toUpperCase()}</div>`;
+    }
+
     gridHTML += `<div class="grid-row">${row}</div>`;
   }
   document.getElementById("grid").innerHTML = gridHTML;
 }
+
 
