@@ -2,20 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Simple Wordle Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordle Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 class = "heading">Wordle Game</h1>
-  <div class="fullcontainer">
-    <div class="game-container">
+ 
+  <nav class="navbar">
+    <h1>Wordle Game</h1>
+    <button class="restart-btn" onclick="restartGame()">Refresh</button>
+  </nav>
+
+ 
+  <div class="main-content">
+    <div class="fullcontainer">
+      <div class="game-container">
         <input id="guessInput" maxlength="5" placeholder="Type 5-letter word" autofocus />
         <button onclick="submitGuess()">Guess</button>
         <div id="grid"></div>
         <div id="message"></div>
-        <button onclick="showWordListEditor()">Hint: Fruits & Vegetables</button>
+        <button onclick="showWordListEditor()">💡 Hint: Fruits & Vegetables</button>
+      </div>
     </div>
   </div>
+
+  
+  <div class="modal-overlay" id="resultModal">
+    <div class="result-modal" id="resultContent">
+      <h2 id="resultTitle">You Win!</h2>
+      <div class="word-display">
+        The word was: <span id="resultWord">APPLE</span>
+      </div>
+      <div class="benefits">
+        <h3>Benefits:</h3>
+        <p id="benefitsText">Loading benefits...</p>
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-btn play-again-btn" onclick="playAgain()">Play Again</button>
+        <button class="modal-btn close-btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+    
   <script src="script.js"></script>
+
+  
 </body>
 </html>
