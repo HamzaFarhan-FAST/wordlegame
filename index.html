@@ -7,13 +7,46 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+
   <nav class="navbar">
     <h1>Wordle Game</h1>
     <button class="restart-btn" onclick="restartGame()">Refresh</button>
+    <button class="rules-btn" onclick="showRulesModal()">Rules</button>
   </nav>
 
- 
+  
+  <div class="modal-overlay" id="rulesModal">
+    <div class="result-modal rules">
+      <h2>How to Play</h2>
+      <div class="rules-list">
+        <ul>
+          <li>Guess the hidden 5-letter fruit or vegetable in 6 tries.</li>
+          <li>Each guess must be a valid 5-letter word from the dictionary.</li>
+          <li>After each guess, the color of the tiles will change to show how close your guess was:</li>
+        </ul>
+        <div style="margin-top:16px;text-align:center;">
+  <span style="display:block; margin-bottom:30px;">
+    <span style="background:#8B0909; color:#EDD9CC; padding:6px 12px; border-radius:4px;">A</span>
+    - Right letter, right place
+  </span>
+  <span style="display:block; margin-bottom:30px;">
+    <span style="background:#edd9cc; color:#232323; padding:6px 12px; border-radius:4px;border: #232323;border-width: 10px;">A</span>
+    - Right letter, wrong place
+  </span>
+  <span style="display:block;">
+    <span style="background:#806350; color:#f3f3f3; padding:6px 12px; border-radius:4px;">A</span>
+    - Not in the word
+  </span>
+</div>
+
+        <ul style="margin-top:14px;">
+          <li>Win or lose, you'll discover a benefit of the chosen word!</li>
+        </ul>
+      </div>
+      <button class="modal-btn close-btn" onclick="closeRulesModal()">Got it!</button>
+    </div>
+  </div>
+
   <div class="main-content">
     <div class="fullcontainer">
       <div class="game-container">
@@ -26,7 +59,6 @@
     </div>
   </div>
 
-  
   <div class="modal-overlay" id="resultModal">
     <div class="result-modal" id="resultContent">
       <h2 id="resultTitle">You Win!</h2>
@@ -43,9 +75,7 @@
       </div>
     </div>
   </div>
-    
-  <script src="script.js"></script>
 
-  
+  <script src="script.js"></script>
 </body>
 </html>
